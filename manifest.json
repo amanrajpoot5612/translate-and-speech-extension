@@ -1,20 +1,16 @@
 {
-  "manifest_version": 3,
-  "name": "Translate and Read",
-  "description": "Translates selected text and reads it aloud.",
+  "name": "Translate + Speak",
   "version": "1.0",
-  "permissions": ["contextMenus", "scripting", "activeTab"],
-  "background": {
-    "service_worker": "background.js"
-  },
+  "manifest_version": 3,
+  "permissions": ["scripting"],
+  "host_permissions": [
+    "https://libretranslate.com/*",
+    "https://api.lecto.ai/*"
+  ],
   "action": {
     "default_popup": "popup.html"
   },
-  "host_permissions": ["<all_urls>"],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ]
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  }
 }

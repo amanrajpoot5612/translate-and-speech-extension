@@ -1,0 +1,20 @@
+body {
+  font-family: sans-serif;
+  padding: 10px;
+  width: 300px;
+}
+
+textarea {
+  width: 100%;
+  height: 80px;
+}
+
+button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+#resultText {
+  margin-top: 15px;
+  font-weight: bold;
+}
