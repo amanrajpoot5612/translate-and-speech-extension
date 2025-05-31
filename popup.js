@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   
   // Configuration
-  const API_KEY = "your-api-key(steps in readme)"; // 
+  const API_KEY = "your-api-key(steps in readme)"; 
   const API_URL = "https://api.lecto.ai/v1/translate/text";
   
   // Get DOM elements
