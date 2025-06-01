@@ -2,8 +2,11 @@
 document.addEventListener('DOMContentLoaded', function() {
   
   // Configuration
-  const API_KEY = "your-api-key(steps in readme)"; 
+  const API_KEY = "a-b-c-d"; // Replace with your actual Lecto API key
   const API_URL = "https://api.lecto.ai/v1/translate/text";
+  const API_KEY_HUGGING_FACE = "a-b-c-d"; // Replace with your actual Hugging Face API key
+  const Authorization = `Bearer ${API_KEY_HUGGING_FACE}`;
+  // Removed invalid Content-Type variable declaration
   
   // Get DOM elements
   const translateBtn = document.getElementById('translateBtn');
@@ -96,18 +99,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Mock summarization function 
   async function summarizeText(text) {
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Simple summarization logic 
-    const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
-    const summary = sentences.slice(0, Math.max(1, Math.ceil(sentences.length / 3))).join('. ') + '.';
-    
+  try {
+    const response = await fetch("https://api-inference.huggingface.co/models/facebook/bart-large-cnn", {
+      method: "POST",
+      headers: {
+        "Authorization": Authorization,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ inputs: text })
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.text();
+      throw new Error(`Summarization request failed: ${response.status} - ${errorBody}`);
+    }
+
+    const data = await response.json();
+
+    if (Array.isArray(data) && data[0]?.summary_text) {
+      return {
+        success: true,
+        result: data[0].summary_text
+      };
+    } else {
+      return {
+        success: false,
+        error: "Unexpected response format from summarization API."
+      };
+    }
+  } catch (error) {
+    console.error("Summarization error:", error);
     return {
-      success: true,
-      result: summary
+      success: false,
+      error: error.message
     };
   }
+}
+
 
   // Translate button event listener
   translateBtn.addEventListener('click', async function() {

@@ -67,13 +67,16 @@ translate-speech-extension/
 
 ## Version History
 
-**v0.1.0 (Current)**
+**v0.1.1 (Current)**
 - Basic translation and speech functionality
 - Right-click context menu
 - Settings page for configuration
+- Hugging Face integration for summarization
 
 **v0.2.0 (Planned)**
-- Hugging Face integration for summarization
+- Enhanced UI/UX with theme support
+- Context menu summarization and translation
+- Dark mode and light mode toggle
 - YouTube video summarization
 - Auto-copy translated text
 - Performance improvements and bug fixes
@@ -86,12 +89,73 @@ MIT License - see LICENSE file for details.
 
 **Note**:
          This extension follows the "Bring Your Own API Key" pattern for security and cost reasons. You'll need to get your own free API keys from the respective services.
-        
-        Visit [Lecto.Ai](https://dashboard.lecto.ai/)
-        Get your API Key and paste that in the
-        Popup.js file -->
-        
-        const API_KEY = "your-api-key(steps in
-        readme)"; 
 
-        <img src="./public/image.png" alt="Refrence n the Source Code" />
+---
+
+***Known Issues***
+
+Large text selections may take longer to process
+API rate limits depend on your Lecto.AI plan
+Internet connection required for all features
+
+***Troubleshooting API Key Issues***
+
+Make sure your API key is correctly pasted in popup.js
+Verify your Lecto.AI account has sufficient credits
+Check that there are no extra spaces or quotes around the API key
+
+***Extension Not Working***
+
+Ensure Developer mode is enabled in your browser
+Try reloading the extension after making changes
+Check browser console for any error messages
+
+***Security & Privacy***
+
+No Data Storage: Your API key is only stored locally in the extension files
+Direct API Calls: All requests go directly to Lecto.AI, not through third-party servers
+User Control: You control your own API usage and costs
+Open Source: All code is visible and auditable
+
+---
+Visit [Lecto.Ai](https://dashboard.lecto.ai/)
+Get your API Key and paste that in the
+Popup.js file -->
+
+    const API_KEY = "your-api-key(steps in
+    readme)"; 
+
+
+<img src="public\api_key.png" alt="Refrence n the Source Code" />
+
+---
+
+
+```
+Sample Popup Image
+```
+<img src="public\sample_popup.png" alt="Refrence n the Source Code" />
+
+```
+Sample Text Image
+```
+<img src="public\sample_text.png" alt="Refrence n the Source Code" />
+
+
+-----
+
+
+```
+Sample Translation Image
+```
+
+<img src="public\sample_translation.png" alt="Refrence n the Source Code" />
+
+---
+
+**Important Notes**
+
+⚠️ This extension requires your own Lecto.AI API key to function
+🔒 Your API key is stored locally and never shared
+💰 You pay only for your own API usage
+🚀 More features coming in the next version!
